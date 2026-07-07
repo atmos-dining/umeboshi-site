@@ -80,7 +80,7 @@
         const el = document.createElement('article');
         el.className = 'blog-card';
         el.innerHTML = `
-          <a href="/blog/posts/post.html#${encodeURIComponent(p.slug)}">
+          <a href="./posts/post.html#${encodeURIComponent(p.slug)}">
             <div class="blog-image" style="${bg}"></div>
             <div class="blog-body">
               <time class="blog-date" datetime="${esc(p.date)}">${fmtDate(p.date)}</time>
