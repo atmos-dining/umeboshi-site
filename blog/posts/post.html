@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <title>ブログ｜食堂 うめぼし</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="食堂 うめぼしのブログ記事">
+<link rel="canonical" id="canonical-link" href="https://shokudou-umeboshi.com/blog/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="食堂 うめぼし">
+<meta property="og:url" id="og-url" content="https://shokudou-umeboshi.com/blog/">
 <link rel="icon" href="../../images/umeboshi_icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -127,6 +132,10 @@
     return;
   }
 
+  const canonicalUrl = `https://shokudou-umeboshi.com/blog/posts/post.html?slug=${encodeURIComponent(slug)}`;
+  document.getElementById('canonical-link')?.setAttribute('href', canonicalUrl);
+  document.getElementById('og-url')?.setAttribute('content', canonicalUrl);
+
   fetch('../../blog/posts.json', { cache: 'no-store' })
     .then(r => { if (!r.ok) throw new Error(); return r.json(); })
     .then(data => {
@@ -160,7 +169,7 @@
           ${imgSrc ? `<img src="${esc(imgSrc)}" alt="${esc(post.title)}" class="post-hero">` : ''}
           <div class="post-body">${bodyHtml}</div>
           <div class="post-back">
-            <a href="../index.html" class="btn-secondary">← ブログ一覧に戻る</a>
+            <a href="/blog/" class="btn-secondary">← ブログ一覧に戻る</a>
           </div>
         </div>`;
     })
